@@ -12,18 +12,18 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['Category', 'Template']
 __metaclass__ = PoolMeta
 
-
 class Category:
     __name__ = 'product.category'
+
     @classmethod
     def __setup__(cls):
         super(Category, cls).__setup__()
-
-        del cls.account_stock.domain[0]
-        del cls.account_stock_supplier.domain[0]
-        del cls.account_stock_customer.domain[0]
-        del cls.account_stock_production.domain[0]
-        del cls.account_stock_lost_found.domain[0]
+        if cls.account_stock.domain:
+            del cls.account_stock.domain[0]
+            del cls.account_stock_supplier.domain[0]
+            del cls.account_stock_customer.domain[0]
+            del cls.account_stock_production.domain[0]
+            del cls.account_stock_lost_found.domain[0]
 
 class Template:
     __name__ = 'product.template'
@@ -31,9 +31,9 @@ class Template:
     @classmethod
     def __setup__(cls):
         super(Template, cls).__setup__()
-
-        del cls.account_stock.domain[0]
-        del cls.account_stock_supplier.domain[0]
-        del cls.account_stock_customer.domain[0]
-        del cls.account_stock_production.domain[0]
-        del cls.account_stock_lost_found.domain[0]
+        if cls.account_stock.domain:
+            del cls.account_stock.domain[0]
+            del cls.account_stock_supplier.domain[0]
+            del cls.account_stock_customer.domain[0]
+            del cls.account_stock_production.domain[0]
+            del cls.account_stock_lost_found.domain[0]
